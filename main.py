@@ -19,7 +19,7 @@ def generate_2d_array(rows, columns):
 def print_array_formatted(array):
     for row in range(0,len(array),1):
         for column in range(0, len(array[row]), 1):
-            if row == len(array)//2 and column == len(array[row])//2:
+            if array[row][column] == 16:
                 print("██",end="")
             elif (array[row][column] == 0 or array[row][column] == 15):
                 print("[]", end = "")
@@ -70,7 +70,7 @@ while True:
 
     print("Circle with radius " + str(radius) + " with block offset (" + str(offset[0]) + ", " + str(offset[1]) + ")")
 
-    grid = generate_2d_array(math.ceil(radius * 2 + 2), math.ceil(radius * 2 + 2))
+    grid = generate_2d_array(math.ceil(radius * 2 + 2)+1, math.ceil(radius * 2 + 2)+1)
 
     for row in range(0,len(grid),1):
         for column in range(0,len(grid[row]),1):
@@ -86,5 +86,8 @@ while True:
             #check bottom right corner
             if (row+1-int(radius+1)-yOffset)**2 + (column+1-int(radius+1)-xOffset)**2 <= radius**2:
                 grid[row][column] += 1
+
+    centreDimension = int(radius+1)
+    grid[centreDimension][centreDimension] = 16
 
     print_array_formatted(grid)
