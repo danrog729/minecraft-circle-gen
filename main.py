@@ -66,9 +66,8 @@ while True:
     radius = valid_float_input("Circle radius: ")
     xOffset = valid_float_input("X coordinate of centre: ")
     yOffset = valid_float_input("Y coordinate of centre: ")
-    offset = (xOffset - int(xOffset), yOffset - int(yOffset))
-
-    print("Circle with radius " + str(radius) + " with block offset (" + str(offset[0]) + ", " + str(offset[1]) + ")")
+    xOffset = xOffset - int(xOffset)
+    yOffset = yOffset - int(yOffset)
 
     grid = generate_2d_array(math.ceil(radius * 2 + 2)+1, math.ceil(radius * 2 + 2)+1)
 
